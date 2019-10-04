@@ -1,0 +1,6 @@
+camunda.bpm:
+  admin-user:
+    id: sunil
+    password: test1234
+  filter:
+    create: All tasks
