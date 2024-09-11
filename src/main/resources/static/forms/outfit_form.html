@@ -1,0 +1,31 @@
+<form name="dateOutfitFormMen">
+    <h3>Choose Your Date Outfit</h3>
+
+    <div>
+        <label for="dressCodeSelectMen">Dress Code:</label>
+        <select id="dressCodeSelectMen" name="dressCode" cam-variable-name="dressCode" cam-variable-type="String"
+                required>
+            <option value="casual">Casual</option>
+            <option value="smartCasual">Smart Casual</option>
+            <option value="formal">Formal</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="outfitChoiceSelectMen">Outfit Choice:</label>
+        <select id="outfitChoiceSelectMen" name="outfitChoice" cam-variable-name="outfitChoice"
+                cam-variable-type="String" required>
+            <option value="tShirtJeans">T-shirt and Jeans</option>
+            <option value="poloKhakis">Polo and Khakis</option>
+            <option value="suitTie">Suit and Tie</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="accessoriesInputMen">Accessories (comma-separated, e.g., watch, belt, sunglasses):</label>
+        <input id="accessoriesInputMen" type="text" name="accessories" cam-variable-name="accessories"
+               cam-variable-type="String"/>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>

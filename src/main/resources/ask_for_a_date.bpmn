@@ -36,7 +36,7 @@
       <bpmn:outgoing>Flow_17pr8kp</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_1m9paok" sourceRef="Gateway_12ndd5h" targetRef="Activity_ChooseOutfit" />
-    <bpmn:userTask id="Activity_ChooseOutfit" name="choose and prepare your outfit" camunda:formRef="camunda-forms:deployment:outfit_form.form" camunda:formRefBinding="latest">
+    <bpmn:userTask id="Activity_ChooseOutfit" name="choose and prepare your outfit" camunda:formKey="embedded:app:forms/outfit_form.html">
       <bpmn:extensionElements />
       <bpmn:incoming>Flow_1m9paok</bpmn:incoming>
       <bpmn:outgoing>Flow_1tyhpny</bpmn:outgoing>
@@ -88,7 +88,7 @@
       <bpmn:incoming>Flow_17pr8kp</bpmn:incoming>
       <bpmn:outgoing>Flow_15kyu8m</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_Play_Xbox" name="Play XBOX 🎮" camunda:delegateExpression="${playBxoxDelegate}">
+    <bpmn:serviceTask id="Activity_Play_Xbox" name="Play XBOX 🎮" camunda:delegateExpression="${playXboxDelegate}">
       <bpmn:incoming>Flow_15qu7vx</bpmn:incoming>
       <bpmn:outgoing>Flow_08jk7p7</bpmn:outgoing>
     </bpmn:serviceTask>
