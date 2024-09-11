@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1w5jpvs" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <bpmn:process id="Process_PlanDinner" name="Process_PlanDinner" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1alarad</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1alarad" sourceRef="StartEvent_1" targetRef="Activity_FindInfo" />
+    <bpmn:sequenceFlow id="Flow_1yq8xg1" sourceRef="Activity_FindInfo" targetRef="Gateway_0kssxec" />
+    <bpmn:businessRuleTask id="Activity_ChooseRestaurant" name="Choose restaurant" camunda:resultVariable="restaurant" camunda:decisionRef="Decision_0wxy6pf" camunda:mapDecisionResult="singleEntry">
+      <bpmn:incoming>Flow_0q8cd22</bpmn:incoming>
+      <bpmn:outgoing>Flow_159ejj9</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="Gateway_1uctf7q" name="Do they have free tables?" default="Flow_13df1n2">
+      <bpmn:incoming>Flow_1dmcnru</bpmn:incoming>
+      <bpmn:outgoing>Flow_19ar2jp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_13df1n2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_159ejj9" sourceRef="Activity_ChooseRestaurant" targetRef="Activity_BookTable" />
+    <bpmn:sequenceFlow id="Flow_19ar2jp" name="YES" sourceRef="Gateway_1uctf7q" targetRef="Event_0t7m2uc">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${tableBooked}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_0t7m2uc">
+      <bpmn:incoming>Flow_19ar2jp</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_0kssxec" default="Flow_0q8cd22">
+      <bpmn:incoming>Flow_1yq8xg1</bpmn:incoming>
+      <bpmn:incoming>Flow_18rwqfy</bpmn:incoming>
+      <bpmn:outgoing>Flow_0q8cd22</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0q8cd22" sourceRef="Gateway_0kssxec" targetRef="Activity_ChooseRestaurant" />
+    <bpmn:sequenceFlow id="Flow_13df1n2" name="NO" sourceRef="Gateway_1uctf7q" targetRef="Activity_LowerRequirements" />
+    <bpmn:sequenceFlow id="Flow_18rwqfy" sourceRef="Activity_LowerRequirements" targetRef="Gateway_0kssxec" />
+    <bpmn:sequenceFlow id="Flow_1dmcnru" sourceRef="Activity_BookTable" targetRef="Gateway_1uctf7q" />
+    <bpmn:serviceTask id="Activity_FindInfo" name="Stalk her social profiles to collect information" camunda:delegateExpression="${collectInfoDelegate}">
+      <bpmn:incoming>Flow_1alarad</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yq8xg1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_BookTable" name="Book table" camunda:delegateExpression="${bookTableDelegate}">
+      <bpmn:incoming>Flow_159ejj9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dmcnru</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:task id="Activity_LowerRequirements" name="Lower requirements / enhance budget etc.">
+      <bpmn:incoming>Flow_13df1n2</bpmn:incoming>
+      <bpmn:outgoing>Flow_18rwqfy</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:textAnnotation id="TextAnnotation_0eoiat1">
+      <bpmn:text>DMN Table</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0k94647" associationDirection="None" sourceRef="Activity_ChooseRestaurant" targetRef="TextAnnotation_0eoiat1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_PlanDinner">
+      <bpmndi:BPMNShape id="Activity_1bax3vw_di" bpmnElement="Activity_ChooseRestaurant">
+        <dc:Bounds x="550" y="137" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0kssxec_di" bpmnElement="Gateway_0kssxec" isMarkerVisible="true">
+        <dc:Bounds x="445" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0t7m2uc_di" bpmnElement="Event_0t7m2uc">
+        <dc:Bounds x="1052" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1uctf7q_di" bpmnElement="Gateway_1uctf7q" isMarkerVisible="true">
+        <dc:Bounds x="885" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="866" y="115" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1s984g7_di" bpmnElement="Activity_FindInfo">
+        <dc:Bounds x="290" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1kv2uoi_di" bpmnElement="Activity_BookTable">
+        <dc:Bounds x="720" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1p6en3c_di" bpmnElement="Activity_LowerRequirements">
+        <dc:Bounds x="630" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0k94647_di" bpmnElement="Association_0k94647">
+        <di:waypoint x="642" y="138" />
+        <di:waypoint x="704" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_0eoiat1_di" bpmnElement="TextAnnotation_0eoiat1">
+        <dc:Bounds x="670" y="50" width="100" height="30" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0q8cd22_di" bpmnElement="Flow_0q8cd22">
+        <di:waypoint x="495" y="177" />
+        <di:waypoint x="550" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_159ejj9_di" bpmnElement="Flow_159ejj9">
+        <di:waypoint x="650" y="177" />
+        <di:waypoint x="720" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1alarad_di" bpmnElement="Flow_1alarad">
+        <di:waypoint x="188" y="177" />
+        <di:waypoint x="290" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yq8xg1_di" bpmnElement="Flow_1yq8xg1">
+        <di:waypoint x="390" y="177" />
+        <di:waypoint x="445" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18rwqfy_di" bpmnElement="Flow_18rwqfy">
+        <di:waypoint x="630" y="310" />
+        <di:waypoint x="470" y="310" />
+        <di:waypoint x="470" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19ar2jp_di" bpmnElement="Flow_19ar2jp">
+        <di:waypoint x="935" y="177" />
+        <di:waypoint x="1052" y="177" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="937" y="153" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dmcnru_di" bpmnElement="Flow_1dmcnru">
+        <di:waypoint x="820" y="177" />
+        <di:waypoint x="885" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13df1n2_di" bpmnElement="Flow_13df1n2">
+        <di:waypoint x="910" y="202" />
+        <di:waypoint x="910" y="310" />
+        <di:waypoint x="730" y="310" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="931" y="215" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

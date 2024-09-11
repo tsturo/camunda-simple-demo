@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="chooseRestaurant" name="chooseRestaurant" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.20.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.20.0">
+  <decision id="Decision_0wxy6pf" name="chooseRestaurant">
+    <decisionTable id="DecisionTable_11wstsr" hitPolicy="FIRST">
+      <input id="Input_1" label="${favouriteCuisine}" biodi:width="192" camunda:inputVariable="favouriteCuisine">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0lott6g" label="${budget}" camunda:inputVariable="budget">
+        <inputExpression id="LiteralExpression_0gav93f" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_04gxgkw" label="${favouriteLocation}" camunda:inputVariable="favouriteLocation">
+        <inputExpression id="LiteralExpression_0i4dwnd" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_06lxfm9" label="${isVegan}" camunda:inputVariable="isVegan">
+        <inputExpression id="LiteralExpression_0qid84v" typeRef="boolean">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1y4z5yl" label="${requiresGlutenFree}" camunda:inputVariable="requiresGlutenFree">
+        <inputExpression id="LiteralExpression_1qtt5gx" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="restaurant" typeRef="string" />
+      <rule id="DecisionRule_0bp21p0">
+        <inputEntry id="UnaryTests_01gmsva">
+          <text>"Italian"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15drvzh">
+          <text>"Medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ee4yrp">
+          <text>"City center"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b4d7yw">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lfiufx">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0owy0jr">
+          <text>"Bella pasta"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s7rgc5">
+        <inputEntry id="UnaryTests_0xje2cq">
+          <text>"Lithuanian"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_161imde">
+          <text>"High"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xcprb8">
+          <text>"Suburbs"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v11ejw">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d8jz6b">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qd7z9t">
+          <text>"Cepelinų pasaulis"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nwdkcc">
+        <inputEntry id="UnaryTests_010zd5k">
+          <text>"Japanese"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ovrk53">
+          <text>"Medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kw0lb2">
+          <text>"City center"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hzxxib">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mqpay9">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ggvekc">
+          <text>"Sushi spot"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07u3x0i">
+        <inputEntry id="UnaryTests_059zeyl">
+          <text>"Indian"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mxn7wy">
+          <text>"Medium"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_134pm3c">
+          <text>"City center"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0949vo9">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rvyq3n">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lzo217">
+          <text>"Curry house"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11hu0de">
+        <inputEntry id="UnaryTests_1l20im8">
+          <text>"Italian"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pp787b">
+          <text>"Luxury"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04yzu5b">
+          <text>"City center"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0brdhpe">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16x14iw">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pnzl86">
+          <text>"La Dolce Vita"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1n77w6l">
+        <inputEntry id="UnaryTests_1kxeapz">
+          <text>"Georgian"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00l5hcr">
+          <text>"Low"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dxz2d4">
+          <text>"Waterfront"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1laafs1">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pz3xeh">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0drhd8u">
+          <text>"Saqartvelo"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_0wxy6pf">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

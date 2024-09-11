@@ -1,0 +1,72 @@
+{
+  "components": [
+    {
+      "label": "Outfit",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1x11fqv",
+        "columns": null
+      },
+      "id": "Field_0nxkns4",
+      "key": "outfit",
+      "description": "What are you going to wear during the date?",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Casual",
+          "value": "Casual"
+        },
+        {
+          "label": "Sneakers",
+          "value": "Sneakers"
+        },
+        {
+          "label": "Flip-flops",
+          "value": "FlipFlops"
+        }
+      ],
+      "label": "Shoes",
+      "type": "radio",
+      "layout": {
+        "row": "Row_0xbdkjn",
+        "columns": null
+      },
+      "id": "Field_0gcw658",
+      "key": "shoes",
+      "defaultValue": "Casual"
+    },
+    {
+      "label": "Comments",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1wnv0ma",
+        "columns": null
+      },
+      "id": "Field_0mrq099",
+      "key": "outfitComments"
+    },
+    {
+      "action": "submit",
+      "label": "Button",
+      "type": "button",
+      "layout": {
+        "row": "Row_0g5q6lk",
+        "columns": null
+      },
+      "id": "Field_0hkz0ig"
+    }
+  ],
+  "type": "default",
+  "id": "outfitForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.20.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.20.0",
+  "schemaVersion": 15
+}
